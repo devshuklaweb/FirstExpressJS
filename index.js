@@ -7,17 +7,23 @@ const port = 3000
 //app.use(express.static(path.join(__dirname,"public")))
 
 //create a custome middleware
-const devMiddleware = (res,req,next) => {
-    console.log(req);
-    next() //iske bad koi aur middleware hotoh run ho jaye
-}
+// const devMiddleware = (res,req,next) => {
+//     console.log(req);
+//     next() //iske bad koi aur middleware hotoh run ho jaye
+// }
 
 //for register middleware
-app.use(devMiddleware);
+//app.use(devMiddleware);
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World = ')
 })
+
+//request with inputs
+app.get('/inputurl/:name', (req, res) => {
+  res.send('Hello World = '+ req.params.name)
+})
+// by pressing this url : http://localhost:3000/inputurl/devendra
 
 app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname,'index.html')); //for showing html page
