@@ -1,5 +1,5 @@
 const express = require('express')
-const path = require("path");
+const path = require("path"); //its required for getting the __dirname
 const app = express()
 const port = 3000
 
@@ -8,8 +8,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname,'index.html'));
-    res.status(200);
+    res.sendFile(path.join(__dirname,'index.html')); //for showing html page
+    res.status(200);//for sending status
 })
 
 app.get('/contact', (req, res) => {
