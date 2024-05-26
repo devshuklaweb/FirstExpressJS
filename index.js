@@ -4,7 +4,16 @@ const app = express()
 const port = 3000
 
 //serve my public folder directory
-app.use(express.static(path.join(__dirname,"public")))
+//app.use(express.static(path.join(__dirname,"public")))
+
+//create a custome middleware
+const devMiddleware = (res,req,next) => {
+    console.log(req);
+    next() //iske bad koi aur middleware hotoh run ho jaye
+}
+
+//for register middleware
+app.use(devMiddleware);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
