@@ -8,8 +8,9 @@ app.get('/', (req, res) => {
 })
 
 app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname,'index.html')); //for showing html page
-    res.status(200);//for sending status
+    // res.sendFile(path.join(__dirname,'index.html')); //for showing html page
+    // res.status(200);//for sending status
+    res.json({name:"devendra",age:"shukla"});
 })
 
 app.get('/contact', (req, res) => {
