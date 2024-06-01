@@ -4,7 +4,7 @@ const app = express()
 const port = 3000
 
 //serve my public folder directory
-//app.use(express.static(path.join(__dirname,"public")))
+app.use(express.static(path.join(__dirname,"static")))
 
 //create a custome middleware
 // const devMiddleware = (res,req,next) => {
@@ -15,27 +15,27 @@ const port = 3000
 //for register middleware
 //app.use(devMiddleware);
 
-app.get('/', (req, res) => {
-  res.send('Hello World = ')
-})
+// app.get('/', (req, res) => {
+//   res.send('Hello World = ')
+// })
 
 //request with inputs
-app.get('/inputurl/:name', (req, res) => {
-  res.send('Hello World = '+ req.params.name)
-})
+// app.get('/inputurl/:name', (req, res) => {
+//   res.send('Hello World = '+ req.params.name)
+// })
 // by pressing this url : http://localhost:3000/inputurl/devendra
 
-app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname,'index.html')); //for showing html page
-    // res.status(200);//for sending status
-   //res.json({name:"devendra",age:"shukla"});
-})
+// app.get('/about', (req, res) => {
+//     res.sendFile(path.join(__dirname,'index.html')); //for showing html page
+//     // res.status(200);//for sending status
+//    //res.json({name:"devendra",age:"shukla"});
+// })
 
-app.get('/contact', (req, res) => {
-res.send('Contact Page')
-})  
+// app.get('/contact', (req, res) => {
+// res.send('Contact Page')
+// })  
 
 app.listen(port, () => {
-  console.log(`Example app listening on port http://localhost:${port}`)
+  console.log(`Blogs app listening on port http://localhost:${port}`)
 })
 
