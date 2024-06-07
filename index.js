@@ -1,41 +1,29 @@
 const express = require('express')
-const path = require("path"); //its required for getting the __dirname
 const app = express()
 const port = 3000
 
-//serve my public folder directory
-app.use(express.static(path.join(__dirname,"static")))
+//MongoDB connection code
+const { MongoClient } = require('mongodb');
+const url = 'mongodb://127.0.0.1:27017';
+//const url = 'mongodb://127.0.0.1:27017/dbname'; //we can directly pas dbname 
+const client = new MongoClient(url);
+const dbname = "devdb";
 
-//create a custome middleware
-// const devMiddleware = (res,req,next) => {
-//     console.log(req);
-//     next() //iske bad koi aur middleware hotoh run ho jaye
-// }
+async function getConnect() {
+  let result = await client.connect();//client.connect already return promise thats why await using
+  let db = client.db(dbname);
+  let collection = db.collection("comments");
+  let response = await collection.find().toArray(); 
+  console.log(response);
+}
 
-//for register middleware
-//app.use(devMiddleware);
+getConnect();//for calling
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World = ')
+// app.get('/', (req, res) => {  
+//   res.send('My DB Connections');
 // })
 
-//request with inputs
-// app.get('/inputurl/:name', (req, res) => {
-//   res.send('Hello World = '+ req.params.name)
+// app.listen(port, () => {
+//   console.log(`Node with mongodb app listening on port http://localhost:${port}`)
 // })
-// by pressing this url : http://localhost:3000/inputurl/devendra
-
-// app.get('/about', (req, res) => {
-//     res.sendFile(path.join(__dirname,'index.html')); //for showing html page
-//     // res.status(200);//for sending status
-//    //res.json({name:"devendra",age:"shukla"});
-// })
-
-// app.get('/contact', (req, res) => {
-// res.send('Contact Page')
-// })  
-
-app.listen(port, () => {
-  console.log(`Blogs app listening on port http://localhost:${port}`)
-})
 
