@@ -1,5 +1,5 @@
 const dbConnect = require("./mongodb");
-const insert = async () => {
+const update = async () => {
     let db = await dbConnect();
     const result = await db.updateOne(
         {Name: 'Deepu-1'},//first block is for condition
@@ -12,4 +12,4 @@ const insert = async () => {
         console.log("Error found!")
     }
 }
-insert();
+update();
