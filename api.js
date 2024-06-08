@@ -4,6 +4,7 @@ const dbConnect = require("./mongodb");
 const mongodb = require('mongodb');//ye jaruri hai new mongodb.ObjectId iske liye
 const port = 3000
 
+
 /*
 API URL: http://localhost:3000/deldata/   
 */
