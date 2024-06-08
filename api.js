@@ -25,6 +25,15 @@ app.delete('/del/:id', async(req,resp)=>{
     let data = await Comments.deleteOne({_id:req.params.id});
     resp.send(data);
 })
+//update api
+app.put('/updatedata/:_id', async(req,resp)=>{
+    let data = await Comments.updateOne(req.params,
+        {
+            $set: req.body
+        }
+    );
+    resp.send(data);
+})
 app.listen(port, () => {
   console.log(`Blogs app listening on port http://localhost:${port}`)
 })
