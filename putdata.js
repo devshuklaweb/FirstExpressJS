@@ -4,7 +4,7 @@ const dbConnect = require("./mongodb");
 const port = 3000
 
 /*
-API URL: http://localhost:3000/putdata
+API URL: http://localhost:3000/putdata/Deepu-101
 Body -> Raw:
 {
     "Name": "Deepu-Kumar",
