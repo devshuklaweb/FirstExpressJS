@@ -1,26 +1,18 @@
 const express = require('express')
 const app = express()
 const dbConnect = require("./mongodb");
+const mongodb = require('mongodb');//ye jaruri hai new mongodb.ObjectId iske liye
 const port = 3000
 
 /*
-API URL: http://localhost:3000/putdata
-Body -> Raw:
-{
-    "Name": "Deepu-Kumar",
-    "Address": "Rajapur Cili",
-    "age": 14
-}   
+API URL: http://localhost:3000/deldata/   
 */
 app.use(express.json());
-app.put('/putdata/:name', async (req, res) => {
+app.delete('/deldata/:id', async (req, res) => {
     let db = await dbConnect();
-    const result = await db.updateOne(
-        {Name: req.params.name},
-        { $set: req.body }
-    );
+    const result = await db.deleteOne({_id:new mongodb.ObjectId(req.params.id)});
     if(result.acknowledged) {
-        res.send({status:200,message:"Data Updated Successfully"});
+        res.send({status:200,message:"Data Deleted Successfully"});
     } else {
         res.send({status:201,message:"Error found!"})
     }
