@@ -34,6 +34,17 @@ app.put('/updatedata/:_id', async(req,resp)=>{
     );
     resp.send(data);
 })
+//search api: with name or address column
+app.get('/searchdata/:key', async(req,resp)=>{
+    let data = await Comments.find({
+        "$or":[
+            {"Name":{$regex:req.params.key}},
+            {"Address":{$regex:req.params.key}}
+        ]
+    });
+    resp.send(data);
+});
+
 app.listen(port, () => {
   console.log(`Blogs app listening on port http://localhost:${port}`)
 })
